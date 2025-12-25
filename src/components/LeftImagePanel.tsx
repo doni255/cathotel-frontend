@@ -1,0 +1,150 @@
+import pawImage from "../assets/paw.png";
+import pawImage2 from "../assets/paw2.png";
+
+const LeftImagePanel = () => {
+  // Dummy images for the 4 cards
+  const images = [
+    "https://picsum.photos/seed/cat1/800/800",
+    "https://picsum.photos/seed/cat2/800/800",
+    "https://picsum.photos/seed/cat3/800/800",
+    "https://picsum.photos/seed/cat4/800/800",
+  ];
+
+  // Card radius configurations based on position
+  const cardRadiusStyles = [
+    { borderTopLeftRadius: '80px', borderTopRightRadius: '18px', borderBottomLeftRadius: '18px', borderBottomRightRadius: '18px' }, // top-left
+    { borderTopLeftRadius: '18px', borderTopRightRadius: '80px', borderBottomLeftRadius: '18px', borderBottomRightRadius: '18px' }, // top-right
+    { borderTopLeftRadius: '18px', borderTopRightRadius: '18px', borderBottomLeftRadius: '80px', borderBottomRightRadius: '18px' }, // bottom-left
+    { borderTopLeftRadius: '18px', borderTopRightRadius: '18px', borderBottomLeftRadius: '18px', borderBottomRightRadius: '80px' }, // bottom-right
+  ];
+
+  return (
+    <div style={{
+      position: 'relative',
+      width: '100%',
+      height: '100vh',
+      backgroundColor: 'var(--color-bg-light)',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      overflow: 'hidden',
+      padding: '24px 0'
+    }}>
+      {/* Decorative Paw - Top Left */}
+      <img
+        src={pawImage}
+        alt="Paw"
+        style={{
+          position: 'absolute',
+          top: '20px',
+          left: '20px'
+        }}
+      />
+    
+   
+      {/* Main Frame Container */}
+      <div style={{
+        position: 'relative',
+        width: 'min(623px, 90%)',
+        height: 'calc(100vh - 120px)',
+        maxHeight: '738px',
+        borderTopLeftRadius: '90px',
+        borderBottomRightRadius: '90px',
+        borderTopRightRadius: '28px',
+        borderBottomLeftRadius: '28px',
+        overflow: 'hidden'
+      }}>
+        {/* Gradient Background */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'var(--gradient-accent)'
+        }} />
+
+        {/* Border Layer 1: Top + Left */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          borderTop: '10px solid rgba(76, 51, 51, 0.4)',
+          borderLeft: '10px solid rgba(76, 51, 51, 0.4)',
+          borderTopLeftRadius: '90px',
+          borderBottomRightRadius: '90px',
+          borderTopRightRadius: '28px',
+          borderBottomLeftRadius: '28px',
+          pointerEvents: 'none'
+        }} />
+
+        {/* Border Layer 2: Bottom + Right */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          borderBottom: '10px solid rgba(76, 51, 51, 0.4)',
+          borderRight: '10px solid rgba(76, 51, 51, 0.4)',
+          borderTopLeftRadius: '90px',
+          borderBottomRightRadius: '90px',
+          borderTopRightRadius: '28px',
+          borderBottomLeftRadius: '28px',
+          pointerEvents: 'none'
+        }} />
+
+        {/* Grid Container for 4 Image Cards */}
+        <div style={{
+          position: 'relative',
+          zIndex: 10,
+          padding: '16px',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gridTemplateRows: '1fr 1fr',
+          gap: '16px',
+          height: '100%'
+        }}>
+          {images.map((src, index) => (
+            <div
+              key={index}
+              style={{
+                width: '100%',
+                height: '100%',
+                overflow: 'hidden',
+                ...cardRadiusStyles[index]
+              }}
+            >
+              <img
+                src={src}
+                alt={`Cat ${index + 1}`}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover'
+                }}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Copyright & Paw Row */}
+      <div style={{
+        width: 'min(623px, 90%)',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: '16px'
+      }}>
+        <p style={{
+          fontSize: '14px',
+          color: '#332A1B',
+          margin: 0
+        }}>
+          © 2025 Cat Hotel by RR
+        </p>
+        <img
+          src={pawImage2}
+          alt="Paw"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default LeftImagePanel;
