@@ -37,8 +37,19 @@ const LeftImagePanel = () => {
         alt="Paw"
         style={{
           position: 'absolute',
-          top: '20px',
-          left: '20px'
+          top: 0,
+          left: 0
+        }}
+      />
+
+      {/* Decorative Paw - Bottom Right */}
+      <img
+        src={pawImage2}
+        alt="Paw"
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          right: 0
         }}
       />
     
@@ -123,26 +134,17 @@ const LeftImagePanel = () => {
         </div>
       </div>
 
-      {/* Copyright & Paw Row */}
-      <div style={{
+      {/* Copyright */}
+      <p style={{
         width: 'min(623px, 90%)',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginTop: '16px'
+        fontSize: '14px',
+        color: '#332A1B',
+        margin: 0,
+        marginTop: '16px',
+        textAlign: 'left'
       }}>
-        <p style={{
-          fontSize: '14px',
-          color: '#332A1B',
-          margin: 0
-        }}>
-          © 2025 Cat Hotel by RR
-        </p>
-        <img
-          src={pawImage2}
-          alt="Paw"
-        />
-      </div>
+        © 2025 Cat Hotel by RR
+      </p>
     </div>
   );
 };
