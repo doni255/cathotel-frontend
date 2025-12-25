@@ -1,5 +1,5 @@
-import RegisterLeftPanel from "../components/RegisterLeftPanel";
-import RegisterFormPanel from "../components/RegisterFormPanel";
+import RegisterLeftPanel from "../../components/auth/RegisterLeftPanel";
+import RegisterFormPanel from "../../components/auth/RegisterFormPanel";
 
 const RegisterPage = () => {
   return (

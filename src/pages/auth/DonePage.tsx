@@ -1,5 +1,5 @@
-import RegisterLeftPanel from "../components/RegisterLeftPanel";
-import DoneFormPanel from "../components/DoneFormPanel";
+import RegisterLeftPanel from "../../components/auth/RegisterLeftPanel";
+import DoneFormPanel from "../../components/auth/DoneFormPanel";
 
 const DonePage = () => {
   return (

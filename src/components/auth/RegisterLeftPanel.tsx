@@ -1,6 +1,6 @@
-import pawImage from "../assets/paw.png";
-import pawImage2 from "../assets/paw2.png";
-import logo from "../assets/logos/logo.png";
+import pawImage from "../../assets/paw.png";
+import pawImage2 from "../../assets/paw2.png";
+import logo from "../../assets/logos/logo.png";
 
 interface RegisterLeftPanelProps {
   activeStep?: number;

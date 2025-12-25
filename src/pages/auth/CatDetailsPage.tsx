@@ -1,5 +1,5 @@
-import RegisterLeftPanel from "../components/RegisterLeftPanel";
-import CatDetailsFormPanel from "../components/CatDetailsFormPanel";
+import RegisterLeftPanel from "../../components/auth/RegisterLeftPanel";
+import CatDetailsFormPanel from "../../components/auth/CatDetailsFormPanel";
 
 const CatDetailsPage = () => {
   return (

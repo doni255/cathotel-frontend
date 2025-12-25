@@ -1,5 +1,5 @@
-import pawImage from "../assets/paw.png";
-import pawImage2 from "../assets/paw2.png";
+import pawImage from "../../assets/paw.png";
+import pawImage2 from "../../assets/paw2.png";
 
 const LeftImagePanel = () => {
   // Dummy images for the 4 cards

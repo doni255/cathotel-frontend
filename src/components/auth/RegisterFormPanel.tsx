@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import logo from '../assets/logos/logo.png';
-import { AppContext } from '../App';
+import logo from '../../assets/logos/logo.png';
+import { AppContext } from '../../App';
 
 const RegisterFormPanel = () => {
   const [showPassword, setShowPassword] = useState(false);

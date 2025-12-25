@@ -1,5 +1,5 @@
-import logo from '../assets/logos/logo.png';
-import { AppContext } from '../App';
+import logo from '../../assets/logos/logo.png';
+import { AppContext } from '../../App';
 
 const DoneFormPanel = () => {
   return (

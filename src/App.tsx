@@ -1,18 +1,19 @@
 import { useState } from "react";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import CatDetailsPage from "./pages/CatDetailsPage";
-import DonePage from "./pages/DonePage";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/auth/LoginPage";
+import RegisterPage from "./pages/auth/RegisterPage";
+import CatDetailsPage from "./pages/auth/CatDetailsPage";
+import DonePage from "./pages/auth/DonePage";
 
-export type PageType = "login" | "register" | "cat-details" | "done";
+export type PageType = "home" | "login" | "register" | "cat-details" | "done";
 
 export const AppContext = {
-  currentPage: "login" as PageType,
+  currentPage: "home" as PageType,
   setCurrentPage: (_page: PageType) => {}
 };
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<PageType>("login");
+  const [currentPage, setCurrentPage] = useState<PageType>("home");
 
   // Update context
   AppContext.currentPage = currentPage;
@@ -20,6 +21,8 @@ function App() {
 
   const renderPage = () => {
     switch (currentPage) {
+      case "home":
+        return <HomePage />;
       case "login":
         return <LoginPage />;
       case "register":
@@ -29,7 +32,7 @@ function App() {
       case "done":
         return <DonePage />;
       default:
-        return <LoginPage />;
+        return <HomePage />;
     }
   };
 
