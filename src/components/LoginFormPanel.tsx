@@ -1,4 +1,5 @@
 import logo from '../assets/logos/logo.png';
+import { AppContext } from '../App';
 
 const LoginFormPanel = () => {
   return (
@@ -163,15 +164,15 @@ const LoginFormPanel = () => {
           type="submit"
           style={{
             width: '100%',
-            padding: '12px',
-            background: 'var(--gradient-accent)',
-            color: 'white',
-            fontWeight: '500',
+            padding: '14px',
+            background: 'var(--color-primary)',
+            color: 'var(--color-text)',
+            fontWeight: '600',
             border: 'none',
             borderRadius: '8px',
             cursor: 'pointer',
             transition: 'opacity 0.3s',
-            fontSize: '14px'
+            fontSize: '16px'
           }}
           onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'}
           onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
@@ -189,13 +190,19 @@ const LoginFormPanel = () => {
         margin: '32px 0 0 0'
       }}>
         Don't have an account?{" "}
-        <a href="#" style={{
-          color: 'var(--color-accent-mid)',
-          fontWeight: '500',
-          textDecoration: 'none'
-        }}
-        onMouseEnter={(e) => e.currentTarget.style.textDecoration = 'underline'}
-        onMouseLeave={(e) => e.currentTarget.style.textDecoration = 'none'}
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            AppContext.setCurrentPage('register');
+          }}
+          style={{
+            color: 'var(--color-accent-mid)',
+            fontWeight: '500',
+            textDecoration: 'none'
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.textDecoration = 'underline'}
+          onMouseLeave={(e) => e.currentTarget.style.textDecoration = 'none'}
         >
           Sign up
         </a>
