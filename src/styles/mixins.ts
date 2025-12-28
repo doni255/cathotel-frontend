@@ -116,6 +116,7 @@ export const textLink: CSSProperties = {
   textDecoration: 'none',
   fontWeight: fontWeight.medium,
   cursor: 'pointer',
+  borderBottom: `1px solid ${colors.accentMid}`,
 };
 
 // ===========================================

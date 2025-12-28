@@ -77,7 +77,7 @@ const LoginFormPanel = () => {
             AppContext.setCurrentPage('register');
           }}
           style={{ ...textLink, fontWeight: fontWeight.medium }}
-          onMouseEnter={(e) => (e.currentTarget.style.textDecoration = 'underline')}
+
           onMouseLeave={(e) => (e.currentTarget.style.textDecoration = 'none')}
         >
           Create an Account
