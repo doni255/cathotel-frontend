@@ -61,27 +61,21 @@ const LeftImagePanel = () => {
         maxHeight: '738px',
         borderTopLeftRadius: '90px',
         borderBottomRightRadius: '90px',
-        borderTopRightRadius: '28px',
-        borderBottomLeftRadius: '28px',
         overflow: 'hidden'
       }}>
         {/* Gradient Background */}
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'var(--gradient-accent)'
+          background: 'linear-gradient(112.79deg, #FDD485 43.64%, #795B47 96.41%, #4C3333 128.78%)'
         }} />
 
         {/* Border Layer 1: Top + Left */}
         <div style={{
           position: 'absolute',
           inset: 0,
-          borderTop: '10px solid rgba(76, 51, 51, 0.4)',
-          borderLeft: '10px solid rgba(76, 51, 51, 0.4)',
           borderTopLeftRadius: '90px',
           borderBottomRightRadius: '90px',
-          borderTopRightRadius: '28px',
-          borderBottomLeftRadius: '28px',
           pointerEvents: 'none'
         }} />
 
@@ -89,12 +83,8 @@ const LeftImagePanel = () => {
         <div style={{
           position: 'absolute',
           inset: 0,
-          borderBottom: '10px solid rgba(76, 51, 51, 0.4)',
-          borderRight: '10px solid rgba(76, 51, 51, 0.4)',
           borderTopLeftRadius: '90px',
           borderBottomRightRadius: '90px',
-          borderTopRightRadius: '28px',
-          borderBottomLeftRadius: '28px',
           pointerEvents: 'none'
         }} />
 
