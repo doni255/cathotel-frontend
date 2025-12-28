@@ -1,6 +1,9 @@
 import pawImage from "../../assets/paw.png";
-import pawImage2 from "../../assets/paw2.png";
-import logo from "../../assets/logos/logo.png";
+import catHotelLogo from "../../assets/logos/NEW CAT HOTEL BYY RR LOGO FEEDS (1) 1 (1).svg";
+import catsImage from "../../assets/cats/3cat.png";
+import detailsIcon from "../../assets/step-sign-in/framer-details.svg";
+import catIcon from "../../assets/step-sign-in/framer-cat.svg";
+import rocketIcon from "../../assets/step-sign-in/framer-rocket.svg";
 
 interface RegisterLeftPanelProps {
   activeStep?: number;
@@ -9,33 +12,17 @@ interface RegisterLeftPanelProps {
 const RegisterLeftPanel = ({ activeStep = 1 }: RegisterLeftPanelProps) => {
   const steps = [
     {
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <rect x="3" y="4" width="18" height="16" rx="2" />
-          <line x1="7" y1="8" x2="17" y2="8" />
-          <line x1="7" y1="12" x2="13" y2="12" />
-        </svg>
-      ),
+      icon: <img src={detailsIcon} alt="Your details" style={{ width: '53px', height: '53px' }} />,
       title: "Your details",
       description: "Enter your email, password, name, and phone number to get started."
     },
     {
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M12 2C8 6 4 10 4 14c0 4.4 3.6 8 8 8s8-3.6 8-8c0-4-4-8-8-12z" />
-          <circle cx="12" cy="14" r="2" />
-        </svg>
-      ),
+      icon: <img src={catIcon} alt="Your cat's details" style={{ width: '53px', height: '53px' }} />,
       title: "Your cat's details",
       description: "Tell us about your cat"
     },
     {
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-          <polyline points="22 4 12 14.01 9 11.01" />
-        </svg>
-      ),
+      icon: <img src={rocketIcon} alt="Done" style={{ width: '53px', height: '53px' }} />,
       title: "Done",
       description: "Your account is ready! Now you can book a cozy stay or grooming session for your cat"
     }
@@ -45,13 +32,17 @@ const RegisterLeftPanel = ({ activeStep = 1 }: RegisterLeftPanelProps) => {
     <div style={{
       position: 'relative',
       width: '100%',
-      height: '100vh',
+      minHeight: '100vh',
       backgroundColor: 'var(--color-bg-light)',
       display: 'flex',
       flexDirection: 'column',
-      padding: '48px',
-      overflow: 'hidden'
+      overflowY: 'auto',
+      overflowX: 'hidden',
+      paddingLeft: '48px',
+      paddingRight: '48px',
+      paddingTop: '32px'
     }}>
+
       {/* Decorative Paw - Top Left */}
       <img
         src={pawImage}
@@ -63,26 +54,55 @@ const RegisterLeftPanel = ({ activeStep = 1 }: RegisterLeftPanelProps) => {
         }}
       />
 
-      {/* Decorative Paw - Bottom Right */}
-      <img
-        src={pawImage2}
-        alt="Paw"
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          right: 0
-        }}
-      />
+      {/* Cats Image - Bottom */}
+      <div style={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start'
+      }}>
+        <p style={{
+          fontSize: '12px',
+          color: 'var(--color-text-sub)',
+          marginBottom: '8px',
+          marginLeft: '48px',
+          margin: '0 0 8px 48px'
+        }}>
+          © 2025 Cat Hotel by RR
+        </p>
+        <img
+          src={catsImage}
+          alt="Cats"
+          style={{
+            height: 'auto',
+            width: '100%'
+          }}
+        />
+      </div>
 
-      {/* Logo & Title */}
+      {/* Cat Hotel Logo */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        gap: '16px',
-        marginBottom: '80px',
-        zIndex: 1
+        gap: '12px',
+        marginTop: '150px',
+        marginBottom: '60px',
+        zIndex: 2
       }}>
-        <img src={logo} alt="Cat Hotel Logo" style={{ height: '48px' }} />
+        <div style={{
+          width: '52px',
+          height: '52px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0
+        }}>
+          <img src={catHotelLogo} alt="Cat Hotel Logo" style={{ height: '40px', width: '40px' }} />
+        </div>
         <h1 style={{
           fontFamily: 'Raleway, sans-serif',
           fontSize: '28px',
@@ -93,14 +113,13 @@ const RegisterLeftPanel = ({ activeStep = 1 }: RegisterLeftPanelProps) => {
           Cat Hotel by RR
         </h1>
       </div>
-
       {/* Stepper */}
       <div style={{
         display: 'flex',
         flexDirection: 'column',
-        gap: '0',
-        zIndex: 1,
-        flex: 1
+
+        zIndex: 2,
+        marginBottom: '100px'
       }}>
         {steps.map((step, index) => {
           const stepNumber = index + 1;
@@ -115,55 +134,21 @@ const RegisterLeftPanel = ({ activeStep = 1 }: RegisterLeftPanelProps) => {
                 flexDirection: 'column',
                 alignItems: 'center'
               }}>
-                {/* Icon Box */}
-                <div style={{
-                  width: '56px',
-                  height: '56px',
-                  borderRadius: '12px',
-                  border: `2px solid ${isActive || isCompleted ? 'var(--color-stroke)' : 'var(--color-line)'}`,
-                  backgroundColor: 'var(--color-bg-white)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: isActive || isCompleted ? 'var(--color-text)' : 'var(--color-text-sub)',
-                  position: 'relative'
-                }}>
-                  {/* Decorative corners */}
-                  <div style={{
-                    position: 'absolute',
-                    top: '-4px',
-                    left: '-4px',
-                    width: '8px',
-                    height: '8px',
-                    borderTop: '2px solid var(--color-text-sub)',
-                    borderLeft: '2px solid var(--color-text-sub)',
-                    opacity: isActive || isCompleted ? 1 : 0.3
-                  }} />
-                  <div style={{
-                    position: 'absolute',
-                    bottom: '-4px',
-                    right: '-4px',
-                    width: '8px',
-                    height: '8px',
-                    borderBottom: '2px solid var(--color-text-sub)',
-                    borderRight: '2px solid var(--color-text-sub)',
-                    opacity: isActive || isCompleted ? 1 : 0.3
-                  }} />
-                  {step.icon}
-                </div>
+                {/* Icon */}
+                {step.icon}
 
                 {/* Connecting Line */}
                 {index < steps.length - 1 && (
                   <div style={{
                     width: '2px',
                     height: '40px',
-                    backgroundColor: isCompleted ? 'var(--color-stroke)' : 'var(--color-line)'
+                    backgroundColor: isCompleted ? 'var(--color-stroke)' : 'var(--color-line)',
                   }} />
                 )}
               </div>
 
               {/* Text Column */}
-              <div style={{ paddingTop: '8px' }}>
+              <div>
                 <h3 style={{
                   fontSize: '18px',
                   fontWeight: '600',
@@ -187,15 +172,6 @@ const RegisterLeftPanel = ({ activeStep = 1 }: RegisterLeftPanelProps) => {
         })}
       </div>
 
-      {/* Copyright */}
-      <p style={{
-        fontSize: '14px',
-        color: '#332A1B',
-        margin: 0,
-        zIndex: 1
-      }}>
-        © 2025 Cat Hotel by RR
-      </p>
     </div>
   );
 };
