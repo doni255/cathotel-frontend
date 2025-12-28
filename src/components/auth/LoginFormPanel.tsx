@@ -1,10 +1,16 @@
+import { useState } from 'react';
 import logo from '../../assets/logos/logo.png';
 import { AppContext } from '../../App';
-import { Button, Input } from '../common';
-import { colors, spacing, fontSize, fontWeight } from '../../styles/constants';
-import { flexCenter, flexBetween, authPanelRight, headingLarge, textBody, textLink, formContainer } from '../../styles/mixins';
+import { Button, Input, Icon } from '../common';
+import { colors, spacing, fontWeight } from '../../styles/constants';
+import { flexCenter, authPanelRight, headingLarge, textBody, textLink, formContainer } from '../../styles/mixins';
 
 const LoginFormPanel = () => {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
   return (
     <div style={authPanelRight}>
       {/* Logo */}
@@ -23,48 +29,41 @@ const LoginFormPanel = () => {
       </div>
 
       {/* Login Form */}
-      <form style={{ ...formContainer, width: '100%', maxWidth: '400px' }}>
+      <form style={{ ...formContainer, width: '100%', maxWidth: '554px' }}>
         <Input
           type="email"
           label="Email"
-          placeholder="Enter your email"
+          placeholder="Email"
+          leftIcon={<Icon icon="email" size={16} />}
         />
 
         <Input
-          type="password"
+          type={isPasswordVisible ? 'text' : 'password'}
           label="Password"
-          placeholder="Enter your password"
-        />
-
-        {/* Remember & Forgot */}
-        <div style={flexBetween}>
-          <label style={{ ...flexCenter, gap: spacing.sm, cursor: 'pointer' }}>
-            <input
-              type="checkbox"
+          placeholder="Password"
+          leftIcon={<Icon icon="lock" size={16} />}
+          rightIcon={
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
               style={{
-                width: '16px',
-                height: '16px',
+                background: 'none',
+                border: 'none',
+                padding: 0,
                 cursor: 'pointer',
-                accentColor: colors.accentMid,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
-            />
-            <span style={{ fontSize: fontSize.sm, color: colors.textSub }}>
-              Remember me
-            </span>
-          </label>
-          <a
-            href="#"
-            style={textLink}
-            onMouseEnter={(e) => (e.currentTarget.style.textDecoration = 'underline')}
-            onMouseLeave={(e) => (e.currentTarget.style.textDecoration = 'none')}
-          >
-            Forgot password?
-          </a>
-        </div>
+            >
+              <Icon icon="eye" size={16} />
+            </button>
+          }
+        />
 
         {/* Submit Button */}
         <Button type="submit" fullWidth>
-          Sign In
+          Login
         </Button>
       </form>
 
@@ -81,7 +80,7 @@ const LoginFormPanel = () => {
           onMouseEnter={(e) => (e.currentTarget.style.textDecoration = 'underline')}
           onMouseLeave={(e) => (e.currentTarget.style.textDecoration = 'none')}
         >
-          Sign up
+          Create an Account
         </a>
       </p>
     </div>

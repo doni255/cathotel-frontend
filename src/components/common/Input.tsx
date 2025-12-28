@@ -25,9 +25,9 @@ const Input = ({
   const [isFocused, setIsFocused] = useState(false);
 
   const sizeStyles = {
-    sm: { padding: `${spacing.sm} ${spacing.md}`, fontSize: fontSize.xs },
-    md: { padding: `${spacing.md} ${spacing.md}`, fontSize: fontSize.sm },
-    lg: { padding: `${spacing.lg} ${spacing.md}`, fontSize: fontSize.md },
+    sm: { paddingTop: spacing.sm, paddingBottom: spacing.sm, fontSize: fontSize.xs },
+    md: { paddingTop: spacing.md, paddingBottom: spacing.md, fontSize: fontSize.sm },
+    lg: { paddingTop: spacing.lg, paddingBottom: spacing.lg, fontSize: fontSize.md },
   };
 
   const inputStyles = mergeStyles(
@@ -36,11 +36,11 @@ const Input = ({
       border: `1px solid ${error ? colors.danger : isFocused ? 'transparent' : colors.stroke}`,
       borderRadius: borderRadius.md,
       outline: 'none',
-      backgroundColor: colors.secondary,
+      backgroundColor: '#FAFAFA',
       transition: transitions.normal,
       boxShadow: isFocused ? `0 0 0 2px ${colors.accentMid}` : 'none',
-      paddingLeft: leftIcon ? '44px' : spacing.md,
-      paddingRight: rightIcon ? '44px' : spacing.md,
+      paddingLeft: leftIcon ? '52px' : spacing.md,
+      paddingRight: rightIcon ? '56px' : spacing.md,
     },
     sizeStyles[size],
     style
@@ -78,7 +78,10 @@ const Input = ({
           </span>
         )}
         <input
-          style={inputStyles}
+          style={{
+            ...inputStyles,
+            color: colors.text,
+          }}
           onFocus={(e) => {
             setIsFocused(true);
             props.onFocus?.(e);
@@ -90,7 +93,7 @@ const Input = ({
           {...props}
         />
         {rightIcon && (
-          <span style={{ ...iconBaseStyles, right: spacing.md }}>
+          <span style={{ ...iconBaseStyles, right: spacing.lg }}>
             {rightIcon}
           </span>
         )}

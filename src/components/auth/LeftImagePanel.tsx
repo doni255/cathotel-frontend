@@ -1,14 +1,13 @@
 import pawImage from "../../assets/paw.png";
 import pawImage2 from "../../assets/paw2.png";
+import cat1 from "../../assets/cats/cat.png";
+import cat2 from "../../assets/cats/cat2.png";
+import cat3 from "../../assets/cats/cat3.png";
+import cat4 from "../../assets/cats/cat4.png";
 
 const LeftImagePanel = () => {
-  // Dummy images for the 4 cards
-  const images = [
-    "https://picsum.photos/seed/cat1/800/800",
-    "https://picsum.photos/seed/cat2/800/800",
-    "https://picsum.photos/seed/cat3/800/800",
-    "https://picsum.photos/seed/cat4/800/800",
-  ];
+  // Cat images for the 4 cards
+  const images = [cat1, cat2, cat3, cat4];
 
   // Card radius configurations based on position
   const cardRadiusStyles = [
