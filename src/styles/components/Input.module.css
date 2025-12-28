@@ -1,0 +1,101 @@
+/* ===========================================
+   Input Component Styles
+   =========================================== */
+
+.wrapper {
+  width: 100%;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.required {
+  color: var(--color-danger);
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid var(--color-stroke);
+  border-radius: 8px;
+  outline: none;
+  background-color: #FAFAFA;
+  transition: all 0.3s ease;
+  color: var(--color-text);
+}
+
+.input::placeholder {
+  color: var(--color-text-sub);
+}
+
+.input:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 2px var(--color-accent-mid);
+}
+
+.input.error {
+  border-color: var(--color-danger);
+}
+
+.input.error:focus {
+  box-shadow: 0 0 0 2px var(--color-danger);
+}
+
+/* Sizes */
+.sm {
+  padding: 8px 16px;
+  font-size: 12px;
+}
+
+.md {
+  padding: 16px 16px;
+  font-size: 14px;
+}
+
+.lg {
+  padding: 24px 16px;
+  font-size: 16px;
+}
+
+/* Icon modifiers */
+.hasLeftIcon {
+  padding-left: 52px;
+}
+
+.hasRightIcon {
+  padding-right: 56px;
+}
+
+/* Icons */
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-sub);
+  display: flex;
+  align-items: center;
+}
+
+.leftIcon {
+  left: 16px;
+}
+
+.rightIcon {
+  right: 24px;
+}
+
+/* Error message */
+.errorMessage {
+  display: block;
+  font-size: 12px;
+  color: var(--color-danger);
+  margin-top: 4px;
+}

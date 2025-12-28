@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import logo from '../../assets/logos/logo.png';
 import { AppContext } from '../../App';
+import { Button } from '../common';
 
 const RegisterFormPanel = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -240,26 +241,9 @@ const RegisterFormPanel = () => {
         </div>
 
         {/* Submit Button */}
-        <button
-          type="submit"
-          style={{
-            width: '100%',
-            padding: '14px',
-            background: 'var(--color-primary)',
-            color: 'var(--color-text)',
-            fontWeight: '600',
-            border: 'none',
-            borderRadius: '8px',
-            cursor: 'pointer',
-            transition: 'opacity 0.3s',
-            fontSize: '16px',
-            marginTop: '12px'
-          }}
-          onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'}
-          onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
-        >
+        <Button type="submit" fullWidth style={{ marginTop: '12px' }}>
           Continue
-        </button>
+        </Button>
       </form>
 
       {/* Login Link */}

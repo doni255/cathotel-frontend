@@ -1,6 +1,5 @@
-import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from 'react';
-import { colors, spacing, borderRadius, fontSize, fontWeight, transitions } from '../../styles/constants';
-import { mergeStyles } from '../../styles/mixins';
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import styles from '../../styles/components/Button.module.css';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
@@ -14,68 +13,19 @@ const Button = ({
   size = 'md',
   fullWidth = false,
   children,
-  style,
+  className,
   ...props
 }: ButtonProps) => {
-  const baseStyle: CSSProperties = {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: spacing.sm,
-    border: 'none',
-    borderRadius: borderRadius.md,
-    cursor: 'pointer',
-    fontWeight: fontWeight.semibold,
-    transition: transitions.normal,
-    width: fullWidth ? '100%' : 'auto',
-  };
-
-  const variantStyles: Record<string, CSSProperties> = {
-    primary: {
-      background: colors.primary,
-      color: colors.text,
-    },
-    secondary: {
-      background: colors.secondary,
-      color: colors.text,
-    },
-    outline: {
-      background: 'transparent',
-      color: colors.text,
-      border: `2px solid ${colors.primary}`,
-    },
-    ghost: {
-      background: 'transparent',
-      color: colors.text,
-    },
-  };
-
-  const sizeStyles: Record<string, CSSProperties> = {
-    sm: {
-      padding: `${spacing.sm} ${spacing.md}`,
-      fontSize: fontSize.sm,
-    },
-    md: {
-      padding: `${spacing.md} ${spacing.lg}`,
-      fontSize: fontSize.md,
-    },
-    lg: {
-      padding: `${spacing.md} ${spacing.xl}`,
-      fontSize: fontSize.lg,
-    },
-  };
+  const classNames = [
+    styles.button,
+    styles[variant],
+    styles[size],
+    fullWidth && styles.fullWidth,
+    className,
+  ].filter(Boolean).join(' ');
 
   return (
-    <button
-      style={mergeStyles(baseStyle, variantStyles[variant], sizeStyles[size], style)}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.opacity = '0.9';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.opacity = '1';
-      }}
-      {...props}
-    >
+    <button className={classNames} {...props}>
       {children}
     </button>
   );

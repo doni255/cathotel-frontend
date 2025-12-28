@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import type { InputHTMLAttributes, ReactNode } from 'react';
-import { colors, spacing, borderRadius, fontSize, transitions } from '../../styles/constants';
-import { mergeStyles } from '../../styles/mixins';
+import styles from '../../styles/components/Input.module.css';
 
 interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   label?: string;
@@ -19,90 +17,40 @@ const Input = ({
   leftIcon,
   rightIcon,
   size = 'md',
-  style,
+  className,
   ...props
 }: InputProps) => {
-  const [isFocused, setIsFocused] = useState(false);
-
-  const sizeStyles = {
-    sm: { paddingTop: spacing.sm, paddingBottom: spacing.sm, fontSize: fontSize.xs },
-    md: { paddingTop: spacing.md, paddingBottom: spacing.md, fontSize: fontSize.sm },
-    lg: { paddingTop: spacing.lg, paddingBottom: spacing.lg, fontSize: fontSize.md },
-  };
-
-  const inputStyles = mergeStyles(
-    {
-      width: '100%',
-      border: `1px solid ${error ? colors.danger : isFocused ? 'transparent' : colors.stroke}`,
-      borderRadius: borderRadius.md,
-      outline: 'none',
-      backgroundColor: '#FAFAFA',
-      transition: transitions.normal,
-      boxShadow: isFocused ? `0 0 0 2px ${colors.accentMid}` : 'none',
-      paddingLeft: leftIcon ? '52px' : spacing.md,
-      paddingRight: rightIcon ? '56px' : spacing.md,
-    },
-    sizeStyles[size],
-    style
-  );
-
-  const labelStyles = {
-    display: 'block',
-    fontSize: fontSize.sm,
-    fontWeight: '500',
-    color: colors.text,
-    marginBottom: spacing.xs,
-  };
-
-  const iconBaseStyles = {
-    position: 'absolute' as const,
-    top: '50%',
-    transform: 'translateY(-50%)',
-    color: colors.textSub,
-    display: 'flex',
-    alignItems: 'center',
-  };
+  const inputClassNames = [
+    styles.input,
+    styles[size],
+    leftIcon && styles.hasLeftIcon,
+    rightIcon && styles.hasRightIcon,
+    error && styles.error,
+    className,
+  ].filter(Boolean).join(' ');
 
   return (
-    <div style={{ width: '100%' }}>
+    <div className={styles.wrapper}>
       {label && (
-        <label style={labelStyles}>
+        <label className={styles.label}>
           {label}
-          {required && <span style={{ color: colors.danger }}> *</span>}
+          {required && <span className={styles.required}> *</span>}
         </label>
       )}
-      <div style={{ position: 'relative' }}>
+      <div className={styles.inputWrapper}>
         {leftIcon && (
-          <span style={{ ...iconBaseStyles, left: spacing.md }}>
+          <span className={`${styles.icon} ${styles.leftIcon}`}>
             {leftIcon}
           </span>
         )}
-        <input
-          style={{
-            ...inputStyles,
-            color: colors.text,
-          }}
-          onFocus={(e) => {
-            setIsFocused(true);
-            props.onFocus?.(e);
-          }}
-          onBlur={(e) => {
-            setIsFocused(false);
-            props.onBlur?.(e);
-          }}
-          {...props}
-        />
+        <input className={inputClassNames} {...props} />
         {rightIcon && (
-          <span style={{ ...iconBaseStyles, right: spacing.lg }}>
+          <span className={`${styles.icon} ${styles.rightIcon}`}>
             {rightIcon}
           </span>
         )}
       </div>
-      {error && (
-        <span style={{ fontSize: fontSize.xs, color: colors.danger, marginTop: spacing.xs }}>
-          {error}
-        </span>
-      )}
+      {error && <span className={styles.errorMessage}>{error}</span>}
     </div>
   );
 };

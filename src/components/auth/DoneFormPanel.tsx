@@ -1,5 +1,6 @@
 import logo from '../../assets/logos/logo.png';
 import { AppContext } from '../../App';
+import { Button } from '../common';
 
 const DoneFormPanel = () => {
   return (
@@ -78,26 +79,13 @@ const DoneFormPanel = () => {
       </p>
 
       {/* CTA Button */}
-      <button
+      <Button
         onClick={() => AppContext.setCurrentPage('login')}
-        style={{
-          width: '100%',
-          maxWidth: '400px',
-          padding: '16px 32px',
-          backgroundColor: 'var(--color-primary)',
-          color: 'var(--color-text)',
-          fontSize: '16px',
-          fontWeight: '600',
-          border: 'none',
-          borderRadius: '12px',
-          cursor: 'pointer',
-          transition: 'opacity 0.3s'
-        }}
-        onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'}
-        onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+        fullWidth
+        style={{ maxWidth: '400px' }}
       >
         Let's Get Started!
-      </button>
+      </Button>
     </div>
   );
 };
